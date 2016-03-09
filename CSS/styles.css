@@ -64,6 +64,22 @@ body{
 	padding: 5px;
 }
 
+#player-choice{
+	position: absolute;
+	top: 100px;
+	left: 150px;
+}
+
+#play1, #play2{
+	border: 5px solid black;
+	background-color: silver;
+	font-size: 30px;
+	width: 200px;
+	margin: 10px auto;
+	padding: 2px;
+	border-radius: 10px;
+}
+
 #status{
 	border: 5px solid black;
 	background-color: #b3d9ff;
