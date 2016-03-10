@@ -27,6 +27,9 @@ var playerScoreO = 0;
 var players = 0;
 var	emptySquares;
 
+
+// ***NEED TO COMBINE FUNCTIONS TO TAKE PAREMENTER of number of players***
+// ***Also make it so player cannot choose a square while it's the computer's turn.***
 function play1()	{
 	players = 1;
 	document.getElementById("play2").style.display = "none";
@@ -48,9 +51,7 @@ function clickMe(element)	{
 		element.innerHTML = playerTurn;
 		element.classList.remove('empty');
 		emptySquares = document.getElementsByClassName("empty");
-		if( emptySquares.length === 0)	{
-			draw();
-		}
+		
 	}
 	if(players === 2) {
 		if (playerTurn === "X") {
@@ -62,12 +63,16 @@ function clickMe(element)	{
 			document.getElementById("status-turn").innerHTML = playerTurn;
 		}
 	checkWin();
+	if(emptySquares.length === 0)	{
+			draw();
+		}
 	}else if(players === 1)	{
-		if( emptySquares.length === 0)	{
+// FIX THIS SO IT CHECKS WIN BEFORE IT CALLS THE DRAW
+		if(emptySquares.length === 0)	{
 			draw();
 		}
 		else 	{
-		computersTurn();
+		setTimeout(computersTurn, 1000);
 		}
 	}
 }
