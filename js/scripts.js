@@ -11,14 +11,12 @@ var winners = [
 
 /*
 Javascript example to set height equel to width by looping through the class array when page loads.
-
-var squareWidth = $("#a1").clientWidth;
+var squareWidth = document.getElementById("a1").clientWidth;
 console.dir(squareWidth);
 var squares = document.getElementsByClassName("square");
 for(var i = 0; i < square.length; i++){
 	squares[i].style.height = squareWidth + "px";
 }
-
 */
 
 var playerTurn = "X";
@@ -32,19 +30,19 @@ var	emptySquares;
 // ***Also make it so player cannot choose a square while it's the computer's turn.***
 function play1()	{
 	players = 1;
-	$("#play2").style.display = "none";
+	document.getElementById("play2").style.display = "none";
 }
 
 function play2()	{
 	players = 2;
-	$("#play1").style.display = "none";
+	document.getElementById("play1").style.display = "none";
 }
 
 
 function clickMe(element)	{
-	$("#errors").style.display = "none";
+	document.getElementById("errors").style.display = "none";
 	if(element.innerHTML == "X" || element.innerHTML == "O")	{
-		$("#errors").style.display = "block";
+		document.getElementById("errors").style.display = "block";
 		return;
 	}
 	else	{
@@ -56,11 +54,11 @@ function clickMe(element)	{
 	if(players === 2) {
 		if (playerTurn === "X") {
 			playerTurn = "O";
-			$("#status-turn").innerHTML = playerTurn;
+			document.getElementById("status-turn").innerHTML = playerTurn;
 		}
 		else	{
 			playerTurn = "X";
-			$("#status-turn").innerHTML = playerTurn;
+			document.getElementById("status-turn").innerHTML = playerTurn;
 		}
 	checkWin();
 	if(emptySquares.length === 0)	{
@@ -79,25 +77,25 @@ function clickMe(element)	{
 
 function checkWin()	{
 	for(var i = 0; i < winners.length; i++)	{
-		if(($(w#inners[i][0]).innerHTML) == "X" && ($(w#inners[i][1]).innerHTML == "X") && ($(w#inners[i][2]).innerHTML == "X"))	{
-			$('#errors').style.display	= "block";
-			$('#errors').innerHTML	= "Player X is the winner!";
-			$(w#inners[i][0]).classList.add("winner");
-			$(w#inners[i][1]).classList.add("winner");
-			$(w#inners[i][2]).classList.add("winner");
+		if((document.getElementById(winners[i][0]).innerHTML) == "X" && (document.getElementById(winners[i][1]).innerHTML == "X") && (document.getElementById(winners[i][2]).innerHTML == "X"))	{
+			document.getElementById('errors').style.display	= "block";
+			document.getElementById('errors').innerHTML	= "Player X is the winner!";
+			document.getElementById(winners[i][0]).classList.add("winner");
+			document.getElementById(winners[i][1]).classList.add("winner");
+			document.getElementById(winners[i][2]).classList.add("winner");
 			playerScoreX++;
-			$("#x-score").innerHTML = playerScoreX;
+			document.getElementById("x-score").innerHTML = playerScoreX;
 			gameOver();
 			break;
 		}
-		else if(($(w#inners[i][0]).innerHTML) == "O" && ($(w#inners[i][1]).innerHTML == "O") && ($(w#inners[i][2]).innerHTML == "O"))	{
-			$('#errors').style.display	= "block";
-			$('#errors').innerHTML	= "Player O is the winner!";
-			$(w#inners[i][0]).classList.add("winner");
-			$(w#inners[i][1]).classList.add("winner");
-			$(w#inners[i][2]).classList.add("winner");
+		else if((document.getElementById(winners[i][0]).innerHTML) == "O" && (document.getElementById(winners[i][1]).innerHTML == "O") && (document.getElementById(winners[i][2]).innerHTML == "O"))	{
+			document.getElementById('errors').style.display	= "block";
+			document.getElementById('errors').innerHTML	= "Player O is the winner!";
+			document.getElementById(winners[i][0]).classList.add("winner");
+			document.getElementById(winners[i][1]).classList.add("winner");
+			document.getElementById(winners[i][2]).classList.add("winner");
 			playerScoreO++;
-			$("#o-score").innerHTML = playerScoreO;
+			document.getElementById("o-score").innerHTML = playerScoreO;
 			gameOver();
 			break;
 		}
@@ -107,15 +105,15 @@ function checkWin()	{
 function reloadPage()	{
 	for(var i = 0; i < winners.length; i++)	{
 		for(var j = 0; j < winners[i].length; j++)	{
-	$(w#inners[i][j]).innerHTML = "";
-	$(w#inners[i][j]).classList.remove("winner");
-	$(w#inners[i][j]).classList.add('empty');
+	document.getElementById(winners[i][j]).innerHTML = "";
+	document.getElementById(winners[i][j]).classList.remove("winner");
+	document.getElementById(winners[i][j]).classList.add('empty');
 		}
 	}	
-	$("#errors").style.display = "none";
-	$("#player-choice").style.display = "block";
+	document.getElementById("errors").style.display = "none";
+	document.getElementById("player-choice").style.display = "block";
 	playerTurn ="X";
-	$("#status-turn").innerHTML = playerTurn;
+	document.getElementById("status-turn").innerHTML = playerTurn;
 	clickOn();
 }
 
@@ -145,7 +143,7 @@ function computersTurn(){
 }
 
 function draw()	{
-	$('#errors').style.display	= "block";
-	$('#errors').innerHTML	= "Draw! Hit Reset to start over!";
+	document.getElementById('errors').style.display	= "block";
+	document.getElementById('errors').innerHTML	= "Draw! Hit Reset to start over!";
 	gameOver();
 }
